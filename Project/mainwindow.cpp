@@ -29,6 +29,8 @@ MainWindow::MainWindow(QWidget *parent) :
 
     connect(uiMainWindow->actionSave, SIGNAL(triggered()), this, SLOT(OnSaveClicked()));
     connect(uiMainWindow->actionOpen, SIGNAL(triggered()), this, SLOT(OnOpenClicked()));
+    connect(hierarchy, SIGNAL(entitySelected(int)), inspector, SLOT(onHierarchyItemSelected(int)));
+
 //    ins = new Inspector();
 //    ui->dockInspector->setWidget(ins);
 //    ins->show();

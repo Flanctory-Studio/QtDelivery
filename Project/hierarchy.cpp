@@ -9,6 +9,7 @@ Hierarchy::Hierarchy(QWidget *parent) :
 
     connect(ui->buttonAddEntity, SIGNAL(clicked()), this, SLOT(OnAddEntityClicked()));
     connect(ui->buttonRemoveEntity, SIGNAL(clicked()), this, SLOT(OnRemoveEntityClicked()));
+    connect(ui->listEntities, SIGNAL(currentRowChanged(int)), this, SLOT(OnItemSelected(int)));
 }
 
 Hierarchy::~Hierarchy()
@@ -24,5 +25,9 @@ void Hierarchy::OnAddEntityClicked()
 void Hierarchy::OnRemoveEntityClicked()
 {
     ui->listEntities->takeItem(ui->listEntities->currentRow());
+}
 
+void Hierarchy::OnItemSelected(int index)
+{
+    emit entitySelected(index);
 }

@@ -16,6 +16,9 @@ public:
     explicit Inspector(QWidget* parent = nullptr);
     ~Inspector();
 
+public slots:
+    void onHierarchyItemSelected(int index);
+
 private:
     Ui::Transform* uiTransform = nullptr;
     Ui::Color* uiColor = nullptr;

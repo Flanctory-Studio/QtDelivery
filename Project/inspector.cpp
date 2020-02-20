@@ -21,9 +21,26 @@ Inspector::Inspector(QWidget *parent) : QWidget(parent)
     layout->addWidget(transform);
     layout->addWidget(color);
 
+    QSpacerItem* spacer = new QSpacerItem(50, 50, QSizePolicy::Expanding, QSizePolicy::Expanding);
+    layout->addSpacerItem(spacer);
+
     setLayout(layout);
 }
 
 Inspector::~Inspector()
 {
+    delete uiTransform;
+    delete uiColor;
+}
+
+void Inspector::onHierarchyItemSelected(int index)
+{
+    if(index != 0)
+    {
+        color->hide();
+    }
+    else
+    {
+        color->show();
+    }
 }
