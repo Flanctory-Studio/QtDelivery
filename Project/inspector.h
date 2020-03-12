@@ -6,6 +6,8 @@
 namespace Ui {
     class Transform;
     class Color;
+    class Shape;
+    class Stroke;
 }
 
 class Inspector : public QWidget
@@ -22,9 +24,13 @@ public slots:
 private:
     Ui::Transform* uiTransform = nullptr;
     Ui::Color* uiColor = nullptr;
+    Ui::Shape* uiShape = nullptr;
+    Ui::Stroke* uiStroke = nullptr;
 
     QWidget* transform = nullptr;
     QWidget* color = nullptr;
+    QWidget* shape = nullptr;
+    QWidget* stroke = nullptr;
 };
 
 #endif // INSPECTOR_H

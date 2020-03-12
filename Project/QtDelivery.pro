@@ -25,7 +25,6 @@ DEFINES += QT_DEPRECATED_WARNINGS
 CONFIG += c++11
 
 SOURCES += \
-        color.cpp \
         hierarchy.cpp \
         inspector.cpp \
         main.cpp \
@@ -33,7 +32,6 @@ SOURCES += \
         scenewidget.cpp
 
 HEADERS += \
-        color.h \
         hierarchy.h \
         inspector.h \
         mainwindow.h \
@@ -43,6 +41,8 @@ FORMS += \
         color.ui \
         hierarchy.ui \
         mainwindow.ui \
+        shape.ui \
+        stroke.ui \
         transform.ui
 
 # Default rules for deployment.
