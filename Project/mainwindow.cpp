@@ -67,7 +67,7 @@ MainWindow::~MainWindow()
 
 void MainWindow::CreateNewScene()
 {
-    currentSceneName = QInputDialog::getText(this, "New Scene", "Scene name:", QLineEdit::Normal, "", nullptr, Qt::WindowFla, Qt::ImhNone);
+    currentSceneName = QInputDialog::getText(this, "New Scene", "Scene name:", QLineEdit::Normal, "", nullptr, Qt::WindowFlags(), Qt::ImhNone);
     setWindowTitle("Current Scene: " + currentSceneName);
 
 
