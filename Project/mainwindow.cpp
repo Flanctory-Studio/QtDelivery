@@ -6,7 +6,10 @@
 #include "inspector.h"
 #include "scenewidget.h"
 
+#include <QFile>
 #include <QMessageBox>
+#include <QStyleFactory>
+#include <QTextStream>
 #include <iostream>
 
 #include "qinputdialog.h"
@@ -15,6 +18,18 @@ MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     uiMainWindow(new Ui::MainWindow)
 {
+    QFile f(":qdarkstyle/style.qss");
+
+    if (!f.exists())   {
+        printf("Unable to set stylesheet, file not found\n");
+    }
+    else   {
+        f.open(QFile::ReadOnly | QFile::Text);
+        QTextStream ts(&f);
+        qApp->setStyleSheet(ts.readAll());
+    }
+
+
     uiMainWindow->setupUi(this);
 
     setWindowTitle("Current Scene: " + currentSceneName);
@@ -38,6 +53,7 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(uiMainWindow->actionQuit, SIGNAL(triggered()), this, SLOT(OnQuitClicked()));
 
     connect(hierarchy, SIGNAL(entitySelected(int)), inspector, SLOT(onHierarchyItemSelected(int)));
+
 
 //    ins = new Inspector();
 //    ui->dockInspector->setWidget(ins);
