@@ -2,5 +2,9 @@
     <qresource prefix="/icons">
         <file alias="open">icons/Folder.png</file>
         <file alias="save">icons/Disquette.png</file>
+        <file>icons/Empty document new.png</file>
+        <file>icons/Power.png</file>
+        <file>icons/PLayer back.png</file>
+        <file>icons/Player Fordward.png</file>
     </qresource>
 </RCC>

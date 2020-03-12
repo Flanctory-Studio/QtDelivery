@@ -19,8 +19,15 @@ public:
     ~MainWindow();
 
 public slots:
+    void OnQuitClicked();
+    void OnNewClicked();
+
+
     void OnSaveClicked();
     void OnOpenClicked();
+
+private:
+    void CreateNewScene();
 
 private:
     Ui::MainWindow* uiMainWindow = nullptr;
@@ -29,6 +36,8 @@ private:
     Inspector* inspector = nullptr;
     SceneWidget* scene = nullptr;
     int num = 0;
+
+    QString currentSceneName = "Default";
 };
 
 #endif // MAINWINDOW_H
