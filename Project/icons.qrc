@@ -6,5 +6,8 @@
         <file>icons/Power.png</file>
         <file>icons/PLayer back.png</file>
         <file>icons/Player Fordward.png</file>
+        <file>icons/engine/rotateTool.png</file>
+        <file>icons/engine/scaleTool.png</file>
+        <file>icons/engine/moveTool.png</file>
     </qresource>
 </RCC>

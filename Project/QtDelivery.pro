@@ -52,4 +52,9 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 RESOURCES += \
     icons.qrc \
+    icons/engine/engineTools.qrc \
     themes/qdarkstyle/style.qrc
+
+DISTFILES += \
+    icons/engine/rotateTool.png \
+    icons/engine/scaleTool.png
