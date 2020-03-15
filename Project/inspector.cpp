@@ -72,9 +72,6 @@ Inspector::Inspector(QWidget *parent, MainWindow* mainWindow) : QWidget(parent),
     connect(uiStroke->spinG, SIGNAL(clicked()), this, SLOT(OnInspectorChange()));
     connect(uiStroke->spinB, SIGNAL(clicked()), this, SLOT(OnInspectorChange()));
 
-    uiSize->spinRad->hide();
-    uiSize->labelRad->hide();
-
     setLayout(layout);
 }
 
@@ -101,11 +98,15 @@ void Inspector::OnHierarchyItemSelected(int index)
 
     uiShape->shapeSelector->setCurrentIndex((int)(*iter)->shape);
 
+    ChangeShapeSelection(uiShape->shapeSelector->currentIndex());
+
     int r,g,b = 0;
     (*iter)->shapeColor.getRgb(&r,&g,&b);
     uiColor->spinR->setValue(r);
     uiColor->spinG->setValue(g);
     uiColor->spinB->setValue(b);
+
+    uiColor->brushStyle->setCurrentIndex((int)(*iter)->shapeStyle);
 
     uiStroke->pixelSpin->setValue((*iter)->borderWidth);
     uiStroke->strokeType->setCurrentIndex((int)(*iter)->borderStyle + 1);
@@ -154,6 +155,49 @@ void Inspector::OnInspectorChange()
 
     }
 
+}
+
+void Inspector::ChangeShapeSelection(uint index)
+{
+    switch (index)
+    {
+        case 0://Square
+            uiSize->spinRad->hide();
+            uiSize->labelRad->hide();
+            uiSize->labelSize->hide();
+            uiSize->spinSize->hide();
+
+            uiSize->spinH->show();
+            uiSize->labelH->show();
+            uiSize->spinW->show();
+            uiSize->labelW->show();
+            break;
+
+        case 1://Triangle
+            uiSize->spinRad->hide();
+            uiSize->labelRad->hide();
+            uiSize->spinH->hide();
+            uiSize->labelH->hide();
+            uiSize->spinW->hide();
+            uiSize->labelW->hide();
+
+            uiSize->labelSize->show();
+            uiSize->spinSize->show();
+            break;
+
+        case 2://Sphere
+            uiSize->spinH->hide();
+            uiSize->labelH->hide();
+            uiSize->spinW->hide();
+            uiSize->labelW->hide();
+            uiSize->labelSize->hide();
+            uiSize->spinSize-> hide();
+
+            uiSize->spinRad->show();
+            uiSize->labelRad->show();
+            break;
+
+    }
 }
 
 

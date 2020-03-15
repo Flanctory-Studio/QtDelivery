@@ -21,6 +21,7 @@ public:
     explicit Inspector(QWidget* parent = nullptr, MainWindow* mainWindow = nullptr);
     ~Inspector();
 
+    void ChangeShapeSelection(uint index);
 public slots:
     void OnHierarchyItemSelected(int index);
     void OnHierarchyItemDeleted(int index);

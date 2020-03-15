@@ -14,16 +14,6 @@
    <string>Form</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
-   <item row="1" column="0">
-    <widget class="QDoubleSpinBox" name="spinRad"/>
-   </item>
-   <item row="0" column="2">
-    <widget class="QLabel" name="labelW">
-     <property name="text">
-      <string>Width</string>
-     </property>
-    </widget>
-   </item>
    <item row="1" column="1">
     <widget class="QDoubleSpinBox" name="spinH"/>
    </item>
@@ -34,6 +24,16 @@
      </property>
     </widget>
    </item>
+   <item row="0" column="2">
+    <widget class="QLabel" name="labelW">
+     <property name="text">
+      <string>Width</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="2">
+    <widget class="QDoubleSpinBox" name="spinW"/>
+   </item>
    <item row="0" column="1">
     <widget class="QLabel" name="labelH">
      <property name="text">
@@ -41,8 +41,18 @@
      </property>
     </widget>
    </item>
-   <item row="1" column="2">
-    <widget class="QDoubleSpinBox" name="spinW"/>
+   <item row="1" column="0">
+    <widget class="QDoubleSpinBox" name="spinRad"/>
+   </item>
+   <item row="0" column="3">
+    <widget class="QLabel" name="labelSize">
+     <property name="text">
+      <string>Size</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="3">
+    <widget class="QDoubleSpinBox" name="spinSize"/>
    </item>
   </layout>
  </widget>
