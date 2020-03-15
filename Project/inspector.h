@@ -42,6 +42,8 @@ private:
     QWidget* stroke = nullptr;
 
     MainWindow* mainWindow = nullptr;
+
+    int goIndex = 0;
 };
 
 #endif // INSPECTOR_H
