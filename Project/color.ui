@@ -68,6 +68,11 @@
     <widget class="QComboBox" name="brushStyle">
      <item>
       <property name="text">
+       <string>Non Pattern</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
        <string>Solid Patern</string>
       </property>
      </item>
@@ -134,21 +139,6 @@
      <item>
       <property name="text">
        <string>Diagonal Cross Pattern</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>Linear Gradient Pattern</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>Radiant Gradient Pattern</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>Conical Gradient Pattern</string>
       </property>
      </item>
     </widget>
