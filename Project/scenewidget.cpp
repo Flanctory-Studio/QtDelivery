@@ -39,7 +39,7 @@ void SceneWidget::DrawGameObject(GameObject* gameObject)
         brush.setStyle(gameObject->shapeStyle);
 
         // Set the pen for the border
-        pen.setWidth(gameObject->lineSize);
+        pen.setWidth(gameObject->borderWidth);
         pen.setColor(gameObject->borderColor);
         pen.setStyle(gameObject->borderStyle);
 
@@ -51,21 +51,40 @@ void SceneWidget::DrawGameObject(GameObject* gameObject)
         switch (gameObject->shape)
         {
         case Shape::Square:
+        {
+            int x = gameObject->position[0];
+            int y = gameObject->position[1];
+            QRect rect(x, y, gameObject->squareW, gameObject->squareH);
 
+            painter.drawRect(rect);
+        }
             break;
         case Shape::Triangle:
+        {
+            QPolygon polygon;
 
+            int x = gameObject->position[0];
+            int y = gameObject->position[1];
+
+            polygon << QPoint(x, y - gameObject->triangleS)
+                    << QPoint(x + 2 * gameObject->triangleS / 3, y + gameObject->triangleS / 3)
+                    << QPoint(x -  2 * gameObject->triangleS / 3, y + gameObject->triangleS / 3);
+
+            painter.drawPolygon(polygon);
+        }
             break;
         case Shape::Circle:
+        {
             // Draw circle
             int r = 64;
             int w = r * 2;
             int h = r * 2;
-            int x = rect().width() / 2 - r;
-            int y = rect().height() / 2 - r;
+            int x = gameObject->position[0] - r;
+            int y = gameObject->position[1] - r;
             QRect circleRect(x, y, w, h);
-            painter.drawEllipse(circleRect);
 
+            painter.drawEllipse(circleRect);
+        }
             break;
         }
     }
@@ -113,5 +132,38 @@ void DrawCircle(SceneWidget* screen, int pos)
 
 void SceneWidget::paintEvent(QPaintEvent *event)
 {
+    GameObject* go = new GameObject();
+
+    go->position[0] = rect().width() / 2;
+    go->position[1] = rect().height() / 2;
+
+    go->borderColor = QColorConstants::Green;
+    go->shapeColor = QColorConstants::Yellow;
+
+    go->borderWidth = 0;
+
+    go->shape = Shape::Triangle;
+
+    DrawGameObject(go);
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
