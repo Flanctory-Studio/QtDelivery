@@ -114,7 +114,4 @@ void DrawCircle(SceneWidget* screen, int pos)
 void SceneWidget::paintEvent(QPaintEvent *event)
 {
 
-   // DrawCircle(this, -64);
-    DrawCircle(this, 64);
-
 }
