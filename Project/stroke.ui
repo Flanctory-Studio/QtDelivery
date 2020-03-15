@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>341</width>
-    <height>123</height>
+    <height>131</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -86,13 +86,34 @@
    <item>
     <layout class="QHBoxLayout" name="horizontalLayout">
      <item>
-      <widget class="QDoubleSpinBox" name="spinR"/>
+      <widget class="QDoubleSpinBox" name="spinR">
+       <property name="decimals">
+        <number>0</number>
+       </property>
+       <property name="maximum">
+        <double>255.000000000000000</double>
+       </property>
+      </widget>
      </item>
      <item>
-      <widget class="QDoubleSpinBox" name="spinG"/>
+      <widget class="QDoubleSpinBox" name="spinG">
+       <property name="decimals">
+        <number>0</number>
+       </property>
+       <property name="maximum">
+        <double>255.000000000000000</double>
+       </property>
+      </widget>
      </item>
      <item>
-      <widget class="QDoubleSpinBox" name="spinB"/>
+      <widget class="QDoubleSpinBox" name="spinB">
+       <property name="decimals">
+        <number>0</number>
+       </property>
+       <property name="maximum">
+        <double>255.000000000000000</double>
+       </property>
+      </widget>
      </item>
     </layout>
    </item>
