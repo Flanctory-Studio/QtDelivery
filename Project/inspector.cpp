@@ -7,7 +7,7 @@
 
 #include <QVBoxLayout>
 
-Inspector::Inspector(QWidget *parent) : QWidget(parent)
+Inspector::Inspector(QWidget *parent, MainWindow* mainWindow) : QWidget(parent), mainWindow(mainWindow)
 {
     uiTransform = new Ui::Transform();
     uiColor = new Ui::Color();
@@ -56,4 +56,9 @@ void Inspector::onHierarchyItemSelected(int index)
     {
         color->show();
     }
+}
+
+void Inspector::OnHierarchyItemDeleted(int index)
+{
+
 }

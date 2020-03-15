@@ -34,10 +34,10 @@ MainWindow::MainWindow(QWidget *parent) :
 
     setWindowTitle("Current Scene: " + currentSceneName);
 
-    hierarchy = new Hierarchy();
+    hierarchy = new Hierarchy(this);
     uiMainWindow->dockHierarchy->setWidget(hierarchy);
 
-    inspector = new Inspector();
+    inspector = new Inspector(this);
     uiMainWindow->dockInspector->setWidget(inspector);
 
     scene = new SceneWidget();
