@@ -21,11 +21,13 @@ public:
     ~Inspector();
 
 public slots:
-    void onHierarchyItemSelected(int index);
+    void OnHierarchyItemSelected(int index);
     void OnHierarchyItemDeleted(int index);
 
     void OnStrokeChange();
     void OnShapeChange();
+
+    void OnInspectorChange();
 
 private:
     Ui::Transform* uiTransform = nullptr;
