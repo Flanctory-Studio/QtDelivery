@@ -95,15 +95,21 @@ void MainWindow::OnSaveClicked()
 
 void MainWindow::OnOpenClicked()
 {
-//    QMessageBox::StandardButton button = QMessageBox::question(this, "Exit application", "Do you want to exit the application without saving the project?");
-//    if (button == QMessageBox::Yes)
-//    {
-//        std::cout << "Exit without saving changes" << std::endl;
-//    }
-//    else if (button == QMessageBox::No)
-//    {
-//        std::cout << "Cancel exit" << std::endl;
-//    }
+    QString requestedName = QInputDialog::getText(this, "Scene to open", "Scene name:", QLineEdit::Normal, "", nullptr, Qt::WindowFlags(), Qt::ImhNone);
+
+    QFile file(requestedName + ".scene");
+
+    if (!file.open(QIODevice::ReadOnly | QIODevice::Text))
+      return;
+
+    setWindowTitle("Current Scene: " + currentSceneName);
+    hierarchy->ClearGameObjects();
+
+    QByteArray content = file.readAll();
+    currentScene = QJsonDocument::fromJson(content);
+
+    QJsonArray array = currentScene.array();
+    hierarchy->LoadScene(array);
 }
 
 void MainWindow::OnQuitClicked()

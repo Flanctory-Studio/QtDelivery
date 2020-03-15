@@ -162,7 +162,7 @@ void Inspector::OnInspectorChange(const QString &text)
         currentGO->borderWidth = uiStroke->pixelSpin->value();
 
         // TODO
-        //currentGO->shapeStyle =  Qt::BrushStyle(uiShape->shapeSelector->currentIndex());
+        currentGO->shapeStyle =  Qt::BrushStyle(uiColor->brushStyle->currentIndex() + 1);
         currentGO->shapeColor.setRgb(uiColor->spinR->value(), uiColor->spinG->value(), uiColor->spinB->value());
 
         currentGO->shape = Shape(uiShape->shapeSelector->currentIndex());
@@ -172,10 +172,10 @@ void Inspector::OnInspectorChange(const QString &text)
         currentGO->squareW = uiSize->spinW->value();
         currentGO->squareH = uiSize->spinH->value();
 
-        currentGO->triangleS = uiSize->spinRad->value();
+        currentGO->triangleS = uiSize->spinSize->value();
 
         // TODO
-        //currentGO->circleR =
+        currentGO->circleR = uiSize->spinRad->value();
 
     }
     else
