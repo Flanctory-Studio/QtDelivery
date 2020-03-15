@@ -34,12 +34,12 @@ private:
 public:
     Hierarchy* hierarchy = nullptr;
     Inspector* inspector = nullptr;
-
+    SceneWidget* scene = nullptr;
 private:
     Ui::MainWindow* uiMainWindow = nullptr;
 
 
-    SceneWidget* scene = nullptr;
+
     int num = 0;
 
     QString currentSceneName = "Default";

@@ -14,8 +14,19 @@
    <string>Form</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
-   <item row="1" column="0">
-    <widget class="QDoubleSpinBox" name="spinRad"/>
+   <item row="1" column="1">
+    <widget class="QDoubleSpinBox" name="spinH">
+     <property name="maximum">
+      <double>9999.000000000000000</double>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="0">
+    <widget class="QLabel" name="labelRad">
+     <property name="text">
+      <string>Radius</string>
+     </property>
+    </widget>
    </item>
    <item row="0" column="2">
     <widget class="QLabel" name="labelW">
@@ -24,13 +35,10 @@
      </property>
     </widget>
    </item>
-   <item row="1" column="1">
-    <widget class="QDoubleSpinBox" name="spinH"/>
-   </item>
-   <item row="0" column="0">
-    <widget class="QLabel" name="labelRad">
-     <property name="text">
-      <string>Radius</string>
+   <item row="1" column="2">
+    <widget class="QDoubleSpinBox" name="spinW">
+     <property name="maximum">
+      <double>9999.000000000000000</double>
      </property>
     </widget>
    </item>
@@ -41,8 +49,26 @@
      </property>
     </widget>
    </item>
-   <item row="1" column="2">
-    <widget class="QDoubleSpinBox" name="spinW"/>
+   <item row="1" column="0">
+    <widget class="QDoubleSpinBox" name="spinRad">
+     <property name="maximum">
+      <double>9999.000000000000000</double>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="3">
+    <widget class="QLabel" name="labelSize">
+     <property name="text">
+      <string>Size</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="3">
+    <widget class="QDoubleSpinBox" name="spinSize">
+     <property name="maximum">
+      <double>9999.000000000000000</double>
+     </property>
+    </widget>
    </item>
   </layout>
  </widget>
