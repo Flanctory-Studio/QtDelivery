@@ -106,7 +106,7 @@ void Inspector::OnHierarchyItemSelected(int index)
     uiColor->spinG->setValue(g);
     uiColor->spinB->setValue(b);
 
-    uiColor->brushStyle->setCurrentIndex((int)(*iter)->shapeStyle);
+    uiColor->brushStyle->setCurrentIndex((int)(*iter)->shapeStyle + 1);
 
     uiStroke->pixelSpin->setValue((*iter)->borderWidth);
     uiStroke->strokeType->setCurrentIndex((int)(*iter)->borderStyle + 1);
