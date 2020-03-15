@@ -2,8 +2,14 @@
 #define HIERARCHY_H
 
 #include <QWidget>
+#include <list>
 
-namespace Ui {
+class MainWindow;
+
+class GameObject;
+
+namespace Ui
+{
     class Hierarchy;
 }
 
@@ -12,7 +18,7 @@ class Hierarchy : public QWidget
     Q_OBJECT
 
 public:
-    explicit Hierarchy(QWidget *parent = nullptr);
+    explicit Hierarchy(QWidget *parent = nullptr, MainWindow* mainWindow = nullptr);
     ~Hierarchy();
 
 signals:
@@ -24,7 +30,9 @@ public slots:
     void OnItemSelected(int index);
 
 private:
+    MainWindow* mainWindow = nullptr;
     Ui::Hierarchy *ui;
+    std::list<GameObject*> gameObjects;
 };
 
 #endif // HIERARCHY_H

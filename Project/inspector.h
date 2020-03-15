@@ -10,16 +10,21 @@ namespace Ui {
     class Stroke;
 }
 
+class MainWindow;
+
 class Inspector : public QWidget
 {
     Q_OBJECT
 
 public:
-    explicit Inspector(QWidget* parent = nullptr);
+    explicit Inspector(QWidget* parent = nullptr, MainWindow* mainWindow = nullptr);
     ~Inspector();
 
 public slots:
-    void onHierarchyItemSelected(int index);
+    void OnHierarchyItemSelected(int index);
+    void OnHierarchyItemDeleted(int index);
+
+    void OnInspectorChange();
 
 private:
     Ui::Transform* uiTransform = nullptr;
@@ -31,6 +36,8 @@ private:
     QWidget* color = nullptr;
     QWidget* shape = nullptr;
     QWidget* stroke = nullptr;
+
+    MainWindow* mainWindow = nullptr;
 };
 
 #endif // INSPECTOR_H

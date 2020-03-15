@@ -22,18 +22,20 @@ public slots:
     void OnQuitClicked();
     void OnNewClicked();
 
-
     void OnSaveClicked();
     void OnOpenClicked();
 
 private:
     void CreateNewScene();
 
+public:
+    Hierarchy* hierarchy = nullptr;
+    Inspector* inspector = nullptr;
+
 private:
     Ui::MainWindow* uiMainWindow = nullptr;
 
-    Hierarchy* hierarchy = nullptr;
-    Inspector* inspector = nullptr;
+
     SceneWidget* scene = nullptr;
     int num = 0;
 
