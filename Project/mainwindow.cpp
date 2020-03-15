@@ -52,7 +52,7 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(uiMainWindow->actionNew, SIGNAL(triggered()), this, SLOT(OnNewClicked()));
     connect(uiMainWindow->actionQuit, SIGNAL(triggered()), this, SLOT(OnQuitClicked()));
 
-    connect(hierarchy, SIGNAL(entitySelected(int)), inspector, SLOT(onHierarchyItemSelected(int)));
+    connect(hierarchy, SIGNAL(entitySelected(int)), inspector, SLOT(OnHierarchyItemSelected(int)));
 }
 
 MainWindow::~MainWindow()

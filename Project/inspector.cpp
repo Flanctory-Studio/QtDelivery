@@ -1,4 +1,7 @@
 #include "inspector.h"
+#include "mainwindow.h"
+#include "gameobject.h"
+#include "hierarchy.h"
 
 #include <ui_transform.h>
 #include <ui_size.h>
@@ -83,14 +86,32 @@ Inspector::~Inspector()
 
 void Inspector::OnHierarchyItemSelected(int index)
 {
-    if(index != 0)
-    {
-        color->hide();
-    }
-    else
-    {
-        color->show();
-    }
+    std::list<GameObject*>::iterator iter = mainWindow->hierarchy->gameObjects.begin();
+
+    std::advance(iter, index);
+
+    uiTransform->posXBox->setValue((*iter)->position[0]);
+    uiTransform->posYBox->setValue((*iter)->position[1]);
+
+    uiSize->spinRad->setValue((*iter)->circleR);
+    uiSize->spinH->setValue((*iter)->squareH);
+    uiSize->spinW->setValue((*iter)->squareW);
+
+    uiShape->shapeSelector->setCurrentIndex((int)(*iter)->shape);
+
+    int r,g,b = 0;
+    (*iter)->shapeColor.getRgb(&r,&g,&b);
+    uiColor->spinR->setValue(r);
+    uiColor->spinG->setValue(g);
+    uiColor->spinB->setValue(b);
+
+    uiStroke->pixelSpin->setValue((*iter)->borderWidth);
+    uiStroke->strokeType->setCurrentIndex((int)(*iter)->borderStyle + 1);
+
+    (*iter)->borderColor.getRgb(&r,&g,&b);
+    uiStroke->spinR->setValue(r);
+    uiStroke->spinG->setValue(g);
+    uiStroke->spinB->setValue(b);
 }
 
 void Inspector::OnHierarchyItemDeleted(int index)
