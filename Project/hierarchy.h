@@ -33,6 +33,7 @@ public slots:
 public:
     void ClearGameObjects();
     void SaveScene(QJsonArray& array);
+    void LoadScene(QJsonArray& array);
 
 private:
 
