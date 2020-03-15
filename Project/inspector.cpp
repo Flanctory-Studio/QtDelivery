@@ -114,18 +114,27 @@ void Inspector::OnHierarchyItemSelected(int index)
     uiStroke->spinR->setValue(r);
     uiStroke->spinG->setValue(g);
     uiStroke->spinB->setValue(b);
+
+    goIndex = index;
 }
 
 void Inspector::OnHierarchyItemDeleted(int index)
 {
 
+
+
+    goIndex = index;
 }
 
 void Inspector::OnInspectorChange()
 {
     //Send to Obj the new information
 
-    GameObject* currentGO = nullptr;
+   GameObject* currentGO = nullptr;
+
+    std::list<GameObject*>::iterator it = mainWindow->hierarchy->gameObjects.begin();
+    std::advance(it, goIndex);
+    currentGO = *it;
 
     if (currentGO != nullptr)
     {
@@ -153,6 +162,8 @@ void Inspector::OnInspectorChange()
         //currentGO->circleR =
 
     }
+    else
+        printf("Error! No GameObject selected! Current GO is nullptr");
 
 }
 
