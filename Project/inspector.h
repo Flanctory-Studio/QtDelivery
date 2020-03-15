@@ -24,9 +24,6 @@ public slots:
     void OnHierarchyItemSelected(int index);
     void OnHierarchyItemDeleted(int index);
 
-    void OnStrokeChange();
-    void OnShapeChange();
-
     void OnInspectorChange();
 
 private:

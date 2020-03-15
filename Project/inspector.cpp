@@ -95,14 +95,3 @@ void Inspector::OnInspectorChange()
 {
     //Send to Obj the new information
 }
-
-
-void Inspector::OnShapeChange()
-{
-
-}
-
-void Inspector::OnStrokeChange()
-{
-
-}
