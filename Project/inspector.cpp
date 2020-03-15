@@ -116,10 +116,10 @@ void Inspector::OnHierarchyItemSelected(int index)
             uiColor->spinG->setValue(g);
             uiColor->spinB->setValue(b);
 
-            uiColor->brushStyle->setCurrentIndex((int)(*iter)->shapeStyle + 1);
+            uiColor->brushStyle->setCurrentIndex((int)(*iter)->shapeStyle - 1);
 
             uiStroke->pixelSpin->setValue((*iter)->borderWidth);
-            uiStroke->strokeType->setCurrentIndex((int)(*iter)->borderStyle + 1);
+            uiStroke->strokeType->setCurrentIndex((int)(*iter)->borderStyle - 1);
 
             (*iter)->borderColor.getRgb(&r,&g,&b);
             uiStroke->spinR->setValue(r);
@@ -134,7 +134,7 @@ void Inspector::OnHierarchyItemDeleted(int index)
 
 
 
-    goIndex = index;
+  //  goIndex = index;
 }
 
 void Inspector::OnInspectorChange(const QString &text)
@@ -176,7 +176,7 @@ void Inspector::OnInspectorChange(const QString &text)
     else
         printf("Error! No GameObject selected! Current GO is nullptr");
 
-     mainWindow->scene->update();
+    mainWindow->scene->update();
 }
 
 void Inspector::ChangeShapeSelection(uint index)
