@@ -3,6 +3,8 @@
 
 #include <QWidget>
 
+class GameObject;
+
 class SceneWidget : public QWidget
 {
     Q_OBJECT
@@ -11,6 +13,8 @@ public:
 
     QSize sizeHint() const override;
     QSize minimumSizeHint() const override;
+
+    void DrawGameObject(GameObject* gameObject);
 
 signals:
 
