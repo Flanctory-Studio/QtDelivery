@@ -13,6 +13,7 @@
 
 #include "gameobject.h"
 #include "scenewidget.h"
+#include <QDebug>
 
 Inspector::Inspector(QWidget *parent, MainWindow* mainWindow) : QWidget(parent), mainWindow(mainWindow)
 {
@@ -97,6 +98,8 @@ void Inspector::OnHierarchyItemSelected(int index)
         std::list<GameObject*>::iterator iter = mainWindow->hierarchy->gameObjects.begin();
         std::advance(iter, index);
 
+        qInfo() << index;
+
         if(*iter != nullptr)
         {
             uiTransform->posXBox->setValue((*iter)->position[0]);
@@ -163,6 +166,8 @@ void Inspector::OnInspectorChange(const QString &text)
         currentGO->shapeColor.setRgb(uiColor->spinR->value(), uiColor->spinG->value(), uiColor->spinB->value());
 
         currentGO->shape = Shape(uiShape->shapeSelector->currentIndex());
+
+        ChangeShapeSelection((uint)currentGO->shape);
 
         currentGO->squareW = uiSize->spinW->value();
         currentGO->squareH = uiSize->spinH->value();
