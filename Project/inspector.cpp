@@ -89,6 +89,8 @@ Inspector::~Inspector()
 
 void Inspector::OnHierarchyItemSelected(int index)
 {
+    goIndex = index;
+
     if(!mainWindow->hierarchy->gameObjects.empty())
     {
         std::list<GameObject*>::iterator iter = mainWindow->hierarchy->gameObjects.begin();
@@ -123,7 +125,6 @@ void Inspector::OnHierarchyItemSelected(int index)
             uiStroke->spinG->setValue(g);
             uiStroke->spinB->setValue(b);
 
-            goIndex = index;
         }
     }
 }
