@@ -85,40 +85,44 @@ Inspector::~Inspector()
 
 void Inspector::OnHierarchyItemSelected(int index)
 {
-    std::list<GameObject*>::iterator iter = mainWindow->hierarchy->gameObjects.begin();
+    if(!mainWindow->hierarchy->gameObjects.empty())
+    {
+        std::list<GameObject*>::iterator iter = mainWindow->hierarchy->gameObjects.begin();
+        std::advance(iter, index);
 
-    std::advance(iter, index);
+        if(*iter != nullptr)
+        {
+            uiTransform->posXBox->setValue((*iter)->position[0]);
+            uiTransform->posYBox->setValue((*iter)->position[1]);
 
-    uiTransform->posXBox->setValue((*iter)->position[0]);
-    uiTransform->posYBox->setValue((*iter)->position[1]);
+            uiSize->spinRad->setValue((*iter)->circleR);
+            uiSize->spinH->setValue((*iter)->squareH);
+            uiSize->spinW->setValue((*iter)->squareW);
 
-    uiSize->spinRad->setValue((*iter)->circleR);
-    uiSize->spinH->setValue((*iter)->squareH);
-    uiSize->spinW->setValue((*iter)->squareW);
+            uiShape->shapeSelector->setCurrentIndex((int)(*iter)->shape);
 
-    uiShape->shapeSelector->setCurrentIndex((int)(*iter)->shape);
+            ChangeShapeSelection(uiShape->shapeSelector->currentIndex());
 
-    ChangeShapeSelection(uiShape->shapeSelector->currentIndex());
+            int r,g,b = 0;
+            (*iter)->shapeColor.getRgb(&r,&g,&b);
+            uiColor->spinR->setValue(r);
+            uiColor->spinG->setValue(g);
+            uiColor->spinB->setValue(b);
 
-    int r,g,b = 0;
-    (*iter)->shapeColor.getRgb(&r,&g,&b);
-    uiColor->spinR->setValue(r);
-    uiColor->spinG->setValue(g);
-    uiColor->spinB->setValue(b);
+            uiColor->brushStyle->setCurrentIndex((int)(*iter)->shapeStyle + 1);
 
-    uiColor->brushStyle->setCurrentIndex((int)(*iter)->shapeStyle + 1);
+            uiStroke->pixelSpin->setValue((*iter)->borderWidth);
+            uiStroke->strokeType->setCurrentIndex((int)(*iter)->borderStyle + 1);
 
-    uiStroke->pixelSpin->setValue((*iter)->borderWidth);
-    uiStroke->strokeType->setCurrentIndex((int)(*iter)->borderStyle + 1);
+            (*iter)->borderColor.getRgb(&r,&g,&b);
+            uiStroke->spinR->setValue(r);
+            uiStroke->spinG->setValue(g);
+            uiStroke->spinB->setValue(b);
 
-    (*iter)->borderColor.getRgb(&r,&g,&b);
-    uiStroke->spinR->setValue(r);
-    uiStroke->spinG->setValue(g);
-    uiStroke->spinB->setValue(b);
-
-    goIndex = index;
+            goIndex = index;
+        }
+    }
 }
-
 void Inspector::OnHierarchyItemDeleted(int index)
 {
 
@@ -172,41 +176,51 @@ void Inspector::ChangeShapeSelection(uint index)
 {
     switch (index)
     {
-        case 0://Square
-            uiSize->spinRad->hide();
-            uiSize->labelRad->hide();
-            uiSize->labelSize->hide();
-            uiSize->spinSize->hide();
+    case 0://Square
+        uiSize->spinRad->hide();
+        uiSize->labelRad->hide();
+        uiSize->labelSize->hide();
+        uiSize->spinSize->hide();
 
-            uiSize->spinH->show();
-            uiSize->labelH->show();
-            uiSize->spinW->show();
-            uiSize->labelW->show();
-            break;
+        uiSize->spinH->show();
+        uiSize->labelH->show();
+        uiSize->spinW->show();
+        uiSize->labelW->show();
+        break;
 
-        case 1://Triangle
-            uiSize->spinRad->hide();
-            uiSize->labelRad->hide();
-            uiSize->spinH->hide();
-            uiSize->labelH->hide();
-            uiSize->spinW->hide();
-            uiSize->labelW->hide();
+    case 1://Triangle
+        uiSize->spinRad->hide();
+        uiSize->labelRad->hide();
+        uiSize->spinH->hide();
+        uiSize->labelH->hide();
+        uiSize->spinW->hide();
+        uiSize->labelW->hide();
 
-            uiSize->labelSize->show();
-            uiSize->spinSize->show();
-            break;
+        uiSize->labelSize->show();
+        uiSize->spinSize->show();
+        break;
 
-        case 2://Sphere
-            uiSize->spinH->hide();
-            uiSize->labelH->hide();
-            uiSize->spinW->hide();
-            uiSize->labelW->hide();
-            uiSize->labelSize->hide();
-            uiSize->spinSize-> hide();
+    case 2://Sphere
+        uiSize->spinH->hide();
+        uiSize->labelH->hide();
+        uiSize->spinW->hide();
+        uiSize->labelW->hide();
+        uiSize->labelSize->hide();
+        uiSize->spinSize-> hide();
 
-            uiSize->spinRad->show();
-            uiSize->labelRad->show();
-            break;
+        uiSize->spinRad->show();
+        uiSize->labelRad->show();
+        break;
+    default:
+        uiSize->spinH->hide();
+        uiSize->labelH->hide();
+        uiSize->spinW->hide();
+        uiSize->labelW->hide();
+        uiSize->labelSize->hide();
+        uiSize->spinSize-> hide();
+        uiSize->spinRad->hide();
+        uiSize->labelRad->hide();
+        break;
 
     }
 }
