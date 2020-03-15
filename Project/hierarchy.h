@@ -29,6 +29,9 @@ public slots:
     void OnRemoveEntityClicked();
     void OnItemSelected(int index);
 
+public:
+    void ClearGameObjects();
+
 private:
     MainWindow* mainWindow = nullptr;
     Ui::Hierarchy *ui;
