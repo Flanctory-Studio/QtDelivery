@@ -1,6 +1,7 @@
 #include "inspector.h"
 
 #include <ui_transform.h>
+#include <ui_size.h>
 #include <ui_shape.h>
 #include <ui_color.h>
 #include <ui_stroke.h>
@@ -10,6 +11,7 @@
 Inspector::Inspector(QWidget *parent, MainWindow* mainWindow) : QWidget(parent), mainWindow(mainWindow)
 {
     uiTransform = new Ui::Transform();
+    uiSize = new Ui::Size();
     uiColor = new Ui::Color();
     uiShape = new Ui::Shape();
     uiStroke = new Ui::Stroke();
@@ -17,6 +19,9 @@ Inspector::Inspector(QWidget *parent, MainWindow* mainWindow) : QWidget(parent),
     // Create transform widget
     transform = new QWidget();
     uiTransform->setupUi(transform);
+
+    size = new QWidget();
+    uiSize->setupUi(size);
 
     color = new QWidget();
     uiColor->setupUi(color);
@@ -30,6 +35,7 @@ Inspector::Inspector(QWidget *parent, MainWindow* mainWindow) : QWidget(parent),
     // Add widgets to layout
     QVBoxLayout* layout = new QVBoxLayout();
     layout->addWidget(transform);
+    layout->addWidget(size);
     layout->addWidget(color);
     layout->addWidget(shape);
     layout->addWidget(stroke);
@@ -40,13 +46,11 @@ Inspector::Inspector(QWidget *parent, MainWindow* mainWindow) : QWidget(parent),
     //Transform modification
     connect(uiTransform->posXBox, SIGNAL(clicked()), this, SLOT(OnInspectorChange()));
     connect(uiTransform->posYBox, SIGNAL(clicked()), this, SLOT(OnInspectorChange()));
-    connect(uiTransform->posZBox, SIGNAL(clicked()), this, SLOT(OnInspectorChange()));
-    connect(uiTransform->rotXBox, SIGNAL(clicked()), this, SLOT(OnInspectorChange()));
-    connect(uiTransform->rotYBox, SIGNAL(clicked()), this, SLOT(OnInspectorChange()));
-    connect(uiTransform->rotZBox, SIGNAL(clicked()), this, SLOT(OnInspectorChange()));
-    connect(uiTransform->scaleXBox, SIGNAL(clicked()), this, SLOT(OnInspectorChange()));
-    connect(uiTransform->scaleYBox, SIGNAL(clicked()), this, SLOT(OnInspectorChange()));
-    connect(uiTransform->scaleZBox, SIGNAL(clicked()), this, SLOT(OnInspectorChange()));
+
+    //Size modification
+    connect(uiSize->spinRad, SIGNAL(clicked()), this, SLOT(OnInspectorChange()));
+    connect(uiSize->spinH, SIGNAL(clicked()), this, SLOT(OnInspectorChange()));
+    connect(uiSize->spinW, SIGNAL(clicked()), this, SLOT(OnInspectorChange()));
 
     //Shape modification
     connect(uiShape->shapeSelector, SIGNAL(clicked()), this, SLOT(OnInspectorChange()));
@@ -62,6 +66,9 @@ Inspector::Inspector(QWidget *parent, MainWindow* mainWindow) : QWidget(parent),
     connect(uiStroke->spinR, SIGNAL(clicked()), this, SLOT(OnInspectorChange()));
     connect(uiStroke->spinG, SIGNAL(clicked()), this, SLOT(OnInspectorChange()));
     connect(uiStroke->spinB, SIGNAL(clicked()), this, SLOT(OnInspectorChange()));
+
+    uiSize->spinRad->hide();
+    uiSize->labelRad->hide();
 
     setLayout(layout);
 }

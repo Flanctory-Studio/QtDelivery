@@ -44,6 +44,7 @@ FORMS += \
         hierarchy.ui \
         mainwindow.ui \
         shape.ui \
+        size.ui \
         stroke.ui \
         transform.ui
 

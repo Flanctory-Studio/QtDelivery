@@ -5,6 +5,7 @@
 
 namespace Ui {
     class Transform;
+    class Size;
     class Color;
     class Shape;
     class Stroke;
@@ -28,11 +29,13 @@ public slots:
 
 private:
     Ui::Transform* uiTransform = nullptr;
+    Ui::Size* uiSize = nullptr;
     Ui::Color* uiColor = nullptr;
     Ui::Shape* uiShape = nullptr;
     Ui::Stroke* uiStroke = nullptr;
 
     QWidget* transform = nullptr;
+    QWidget* size = nullptr;
     QWidget* color = nullptr;
     QWidget* shape = nullptr;
     QWidget* stroke = nullptr;
