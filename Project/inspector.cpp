@@ -8,6 +8,8 @@
 
 #include <QVBoxLayout>
 
+#include "gameobject.h"
+
 Inspector::Inspector(QWidget *parent, MainWindow* mainWindow) : QWidget(parent), mainWindow(mainWindow)
 {
     uiTransform = new Ui::Transform();
@@ -101,4 +103,67 @@ void Inspector::OnHierarchyItemDeleted(int index)
 void Inspector::OnInspectorChange()
 {
     //Send to Obj the new information
+
+    GameObject* currentGO = nullptr;
+
+    if (currentGO != nullptr)
+    {
+
+        // Position
+        currentGO->position[0] = uiTransform->posXBox->value();
+        currentGO->position[1] = uiTransform->posYBox->value();
+
+        currentGO->borderStyle = Qt::PenStyle(uiStroke->strokeType->currentIndex() + 1);
+        currentGO->borderColor.setRgb(uiStroke->spinR->value(), uiStroke->spinG->value(), uiStroke->spinB->value());
+        currentGO->borderWidth = uiStroke->pixelSpin->value();
+
+        // TODO
+        //currentGO->shapeStyle =  Qt::BrushStyle(uiShape->shapeSelector->currentIndex());
+        currentGO->shapeColor.setRgb(uiColor->spinR->value(), uiColor->spinG->value(), uiColor->spinB->value());
+
+        currentGO->shape = Shape(uiShape->shapeSelector->currentIndex());
+
+        currentGO->squareW = uiSize->spinW->value();
+        currentGO->squareH = uiSize->spinH->value();
+
+        currentGO->triangleS = uiSize->spinRad->value();
+
+        // TODO
+        //currentGO->circleR =
+
+    }
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
