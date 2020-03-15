@@ -24,6 +24,9 @@ public slots:
     void onHierarchyItemSelected(int index);
     void OnHierarchyItemDeleted(int index);
 
+    void OnStrokeChange();
+    void OnShapeChange();
+
 private:
     Ui::Transform* uiTransform = nullptr;
     Ui::Color* uiColor = nullptr;
