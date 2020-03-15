@@ -66,6 +66,7 @@ Inspector::Inspector(QWidget *parent, MainWindow* mainWindow) : QWidget(parent),
     connect(uiColor->spinR, SIGNAL(textChanged(const QString &)), this, SLOT(OnInspectorChange(const QString &)));
     connect(uiColor->spinG, SIGNAL(textChanged(const QString &)), this, SLOT(OnInspectorChange(const QString &)));
     connect(uiColor->spinB, SIGNAL(textChanged(const QString &)), this, SLOT(OnInspectorChange(const QString &)));
+    connect(uiColor->brushStyle, SIGNAL(currentIndexChanged(const QString &)), this, SLOT(OnInspectorChange(const QString &)));
 
     //Stroke modification
     connect(uiStroke->pixelSpin, SIGNAL(textChanged(const QString &)), this, SLOT(OnInspectorChange(const QString &)));
