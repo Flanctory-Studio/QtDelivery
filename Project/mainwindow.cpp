@@ -66,7 +66,13 @@ MainWindow::~MainWindow()
 
 void MainWindow::CreateNewScene()
 {
-    currentSceneName = QInputDialog::getText(this, "New Scene", "Scene name:", QLineEdit::Normal, "", nullptr, Qt::WindowFlags(), Qt::ImhNone);
+    QString requestedName = QInputDialog::getText(this, "New Scene", "Scene name:", QLineEdit::Normal, "", nullptr, Qt::WindowFlags(), Qt::ImhNone);
+    if(requestedName.isNull())
+    {
+        return;
+    }
+
+    currentSceneName = requestedName;
     setWindowTitle("Current Scene: " + currentSceneName);
 
     hierarchy->ClearGameObjects();
@@ -82,20 +88,32 @@ void MainWindow::OnSaveClicked()
 
     hierarchy->SaveScene(arrayJSON);
 
-    currentScene = QJsonDocument(arrayJSON);
+    currentScene = QJsonDocument();
+
+    QJsonObject object;
+    object["GameObjects"] = arrayJSON;
+
+    currentScene.setObject(object);
 
     QFile file(currentSceneName + ".scene");
 
     if (file.open(QIODevice::WriteOnly | QIODevice::Text))
     {
-        QDataStream content (&file);
-        content << currentScene;
+        file.write(currentScene.toJson());
+
+        //QDataStream content (&file);
+        //content << currentScene.toJson();
     }
 }
 
 void MainWindow::OnOpenClicked()
 {
     QString requestedName = QInputDialog::getText(this, "Scene to open", "Scene name:", QLineEdit::Normal, "", nullptr, Qt::WindowFlags(), Qt::ImhNone);
+
+    if(requestedName.isNull())
+    {
+        return;
+    }
 
     QFile file(requestedName + ".scene");
 
@@ -108,7 +126,10 @@ void MainWindow::OnOpenClicked()
     QByteArray content = file.readAll();
     currentScene = QJsonDocument::fromJson(content);
 
-    QJsonArray array = currentScene.array();
+    QJsonObject object = currentScene.object();
+
+    QJsonArray array = object["GameObjects"].toArray();
+
     hierarchy->LoadScene(array);
 }
 

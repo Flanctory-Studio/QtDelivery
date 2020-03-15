@@ -121,5 +121,8 @@ void Hierarchy::LoadScene(QJsonArray& array)
         gameObject->circleR = object["Circle Radius"].toInt();
 
         gameObjects.push_back(gameObject);
+        ui->listEntities->addItem("GameObject");
     }
+
+    mainWindow->scene->update();
 }

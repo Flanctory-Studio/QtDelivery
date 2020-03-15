@@ -47,6 +47,12 @@ Inspector::Inspector(QWidget *parent, MainWindow* mainWindow) : QWidget(parent),
     layout->addWidget(shape);
     layout->addWidget(stroke);
 
+    transform->hide();
+    size->hide();
+    color->hide();
+    shape->hide();
+    stroke->hide();
+
     QSpacerItem* spacer = new QSpacerItem(50, 50, QSizePolicy::Expanding, QSizePolicy::Expanding);
     layout->addSpacerItem(spacer);
 
@@ -121,8 +127,23 @@ void Inspector::OnHierarchyItemSelected(int index)
 {
     goIndex = index;
 
-    if(!mainWindow->hierarchy->gameObjects.empty())
+    if(index == -1)
     {
+        transform->hide();
+        size->hide();
+        color->hide();
+        shape->hide();
+        stroke->hide();
+    }
+
+    else if(!mainWindow->hierarchy->gameObjects.empty())
+    {
+        transform->show();
+        size->show();
+        color->show();
+        shape->show();
+        stroke->show();
+
         std::list<GameObject*>::iterator iter = mainWindow->hierarchy->gameObjects.begin();
         std::advance(iter, index);
 
