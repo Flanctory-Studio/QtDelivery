@@ -119,10 +119,10 @@ void Inspector::OnHierarchyItemSelected(int index)
             uiColor->spinG->setValue(g);
             uiColor->spinB->setValue(b);
 
-            uiColor->brushStyle->setCurrentIndex((int)(*iter)->shapeStyle + 1);
+            uiColor->brushStyle->setCurrentIndex((int)(*iter)->shapeStyle);
 
             uiStroke->pixelSpin->setValue((*iter)->borderWidth);
-            uiStroke->strokeType->setCurrentIndex((int)(*iter)->borderStyle + 1);
+            uiStroke->strokeType->setCurrentIndex((int)(*iter)->borderStyle);
 
             (*iter)->borderColor.getRgb(&r,&g,&b);
             uiStroke->spinR->setValue(r);
@@ -137,7 +137,7 @@ void Inspector::OnHierarchyItemDeleted(int index)
 
 
 
-    goIndex = index;
+  //  goIndex = index;
 }
 
 void Inspector::OnInspectorChange(const QString &text)
@@ -157,12 +157,12 @@ void Inspector::OnInspectorChange(const QString &text)
         currentGO->position[0] = uiTransform->posXBox->value();
         currentGO->position[1] = uiTransform->posYBox->value();
 
-        currentGO->borderStyle = Qt::PenStyle(uiStroke->strokeType->currentIndex() + 1);
+        currentGO->borderStyle = Qt::PenStyle(uiStroke->strokeType->currentIndex());
         currentGO->borderColor.setRgb(uiStroke->spinR->value(), uiStroke->spinG->value(), uiStroke->spinB->value());
         currentGO->borderWidth = uiStroke->pixelSpin->value();
 
         // TODO
-        currentGO->shapeStyle =  Qt::BrushStyle(uiColor->brushStyle->currentIndex() + 1);
+        currentGO->shapeStyle =  Qt::BrushStyle(uiColor->brushStyle->currentIndex());
         currentGO->shapeColor.setRgb(uiColor->spinR->value(), uiColor->spinG->value(), uiColor->spinB->value());
 
         currentGO->shape = Shape(uiShape->shapeSelector->currentIndex());
@@ -181,7 +181,7 @@ void Inspector::OnInspectorChange(const QString &text)
     else
         printf("Error! No GameObject selected! Current GO is nullptr");
 
-     mainWindow->scene->update();
+    mainWindow->scene->update();
 }
 
 void Inspector::ChangeShapeSelection(uint index)
