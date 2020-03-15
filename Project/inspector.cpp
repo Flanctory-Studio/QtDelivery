@@ -166,10 +166,10 @@ void Inspector::OnInspectorChange(const QString &text)
         currentGO->squareW = uiSize->spinW->value();
         currentGO->squareH = uiSize->spinH->value();
 
-        currentGO->triangleS = uiSize->spinRad->value();
+        currentGO->triangleS = uiSize->spinSize->value();
 
         // TODO
-        //currentGO->circleR =
+        currentGO->circleR = uiSize->spinRad->value();
 
     }
     else
