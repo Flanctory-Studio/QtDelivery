@@ -17,7 +17,7 @@
    <item>
     <widget class="QLabel" name="colorLabel">
      <property name="text">
-      <string>Color RGBA</string>
+      <string>Color RGB</string>
      </property>
     </widget>
    </item>
@@ -29,7 +29,7 @@
         <double>1.000000000000000</double>
        </property>
        <property name="singleStep">
-        <double>0.010000000000000</double>
+        <double>1.000000000000000</double>
        </property>
       </widget>
      </item>
@@ -39,7 +39,7 @@
         <double>1.000000000000000</double>
        </property>
        <property name="singleStep">
-        <double>0.010000000000000</double>
+        <double>1.000000000000000</double>
        </property>
       </widget>
      </item>
@@ -49,17 +49,7 @@
         <double>1.000000000000000</double>
        </property>
        <property name="singleStep">
-        <double>0.010000000000000</double>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QDoubleSpinBox" name="spinA">
-       <property name="maximum">
         <double>1.000000000000000</double>
-       </property>
-       <property name="singleStep">
-        <double>0.010000000000000</double>
        </property>
       </widget>
      </item>
