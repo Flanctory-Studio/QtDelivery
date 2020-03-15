@@ -14,6 +14,10 @@
 
 #include "qinputdialog.h"
 
+#include <QJsonDocument>
+#include <QJsonObject>
+#include <QJsonArray>
+
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     uiMainWindow(new Ui::MainWindow)
@@ -74,7 +78,19 @@ void MainWindow::CreateNewScene()
 
 void MainWindow::OnSaveClicked()
 {
+    QJsonArray arrayJSON;
 
+    hierarchy->SaveScene(arrayJSON);
+
+    currentScene = QJsonDocument(arrayJSON);
+
+    QFile file(currentSceneName + ".scene");
+
+    if (file.open(QIODevice::WriteOnly | QIODevice::Text))
+    {
+        QDataStream content (&file);
+        content << currentScene;
+    }
 }
 
 void MainWindow::OnOpenClicked()

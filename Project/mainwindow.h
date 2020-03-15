@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QJsonDocument>
 
 namespace Ui {
     class MainWindow;
@@ -9,6 +10,8 @@ namespace Ui {
 class Hierarchy;
 class Inspector;
 class SceneWidget;
+
+
 
 class MainWindow : public QMainWindow
 {
@@ -40,6 +43,7 @@ private:
     int num = 0;
 
     QString currentSceneName = "Default";
+    QJsonDocument currentScene;
 };
 
 #endif // MAINWINDOW_H

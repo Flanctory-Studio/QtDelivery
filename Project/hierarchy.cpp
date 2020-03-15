@@ -2,6 +2,7 @@
 #include "ui_hierarchy.h"
 #include "gameobject.h"
 #include "mainwindow.h"
+#include "QJsonObject"
 
 Hierarchy::Hierarchy(QWidget *parent, MainWindow* mainWindow) :
     QWidget(parent),
@@ -55,4 +56,16 @@ void Hierarchy::ClearGameObjects()
    gameObjects.clear();
 
    ui->listEntities->clear();
+}
+
+void Hierarchy::SaveScene(QJsonArray& array)
+{
+    for(GameObject* gameObject : gameObjects)
+    {
+        QJsonObject object;
+        object["Position X"] = gameObject->position[0];
+        object["Position Y"] = gameObject->position[1];
+
+        array.push_back(object);
+    }
 }

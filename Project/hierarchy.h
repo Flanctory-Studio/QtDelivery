@@ -3,6 +3,7 @@
 
 #include <QWidget>
 #include <list>
+#include <QJsonArray>
 
 class MainWindow;
 
@@ -31,6 +32,7 @@ public slots:
 
 public:
     void ClearGameObjects();
+    void SaveScene(QJsonArray& array);
 
 private:
     MainWindow* mainWindow = nullptr;
