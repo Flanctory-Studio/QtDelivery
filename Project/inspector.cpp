@@ -90,6 +90,8 @@ Inspector::~Inspector()
 
 void Inspector::OnHierarchyItemSelected(int index)
 {
+    goIndex = index;
+
     if(!mainWindow->hierarchy->gameObjects.empty())
     {
         std::list<GameObject*>::iterator iter = mainWindow->hierarchy->gameObjects.begin();
@@ -124,7 +126,6 @@ void Inspector::OnHierarchyItemSelected(int index)
             uiStroke->spinG->setValue(g);
             uiStroke->spinB->setValue(b);
 
-            goIndex = index;
         }
     }
 }
@@ -175,7 +176,7 @@ void Inspector::OnInspectorChange(const QString &text)
     else
         printf("Error! No GameObject selected! Current GO is nullptr");
 
-     mainWindow->scene->show();
+     mainWindow->scene->update();
 }
 
 void Inspector::ChangeShapeSelection(uint index)
