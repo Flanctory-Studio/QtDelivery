@@ -33,8 +33,11 @@ public:
     void ClearGameObjects();
 
 private:
+
     MainWindow* mainWindow = nullptr;
     Ui::Hierarchy *ui;
+public:
+
     std::list<GameObject*> gameObjects;
 };
 
