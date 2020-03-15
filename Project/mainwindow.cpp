@@ -66,7 +66,13 @@ MainWindow::~MainWindow()
 
 void MainWindow::CreateNewScene()
 {
-    currentSceneName = QInputDialog::getText(this, "New Scene", "Scene name:", QLineEdit::Normal, "", nullptr, Qt::WindowFlags(), Qt::ImhNone);
+    QString requestedName = QInputDialog::getText(this, "New Scene", "Scene name:", QLineEdit::Normal, "", nullptr, Qt::WindowFlags(), Qt::ImhNone);
+    if(requestedName.isNull())
+    {
+        return;
+    }
+
+    currentSceneName = requestedName;
     setWindowTitle("Current Scene: " + currentSceneName);
 
     hierarchy->ClearGameObjects();
@@ -103,6 +109,11 @@ void MainWindow::OnSaveClicked()
 void MainWindow::OnOpenClicked()
 {
     QString requestedName = QInputDialog::getText(this, "Scene to open", "Scene name:", QLineEdit::Normal, "", nullptr, Qt::WindowFlags(), Qt::ImhNone);
+
+    if(requestedName.isNull())
+    {
+        return;
+    }
 
     QFile file(requestedName + ".scene");
 

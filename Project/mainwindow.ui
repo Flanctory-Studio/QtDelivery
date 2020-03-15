@@ -71,9 +71,11 @@
    <attribute name="toolBarBreak">
     <bool>false</bool>
    </attribute>
-   <addaction name="toolMove"/>
-   <addaction name="toolRotate"/>
-   <addaction name="toolScale"/>
+   <addaction name="separator"/>
+   <addaction name="actionNew"/>
+   <addaction name="actionOpen"/>
+   <addaction name="actionSave"/>
+   <addaction name="actionQuit"/>
   </widget>
   <action name="actionHelp">
    <property name="text">
@@ -150,7 +152,7 @@
     <string>Ctrl+Y</string>
    </property>
   </action>
-  <action name="toolMove">
+  <action name="toolNew">
    <property name="icon">
     <iconset resource="icons.qrc">
      <normaloff>:/icons/icons/engine/moveTool.png</normaloff>:/icons/icons/engine/moveTool.png</iconset>
