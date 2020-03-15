@@ -174,7 +174,7 @@ void Inspector::OnInspectorChange(const QString &text)
     else
         printf("Error! No GameObject selected! Current GO is nullptr");
 
-     mainWindow->scene->show();
+     mainWindow->scene->update();
 }
 
 void Inspector::ChangeShapeSelection(uint index)
