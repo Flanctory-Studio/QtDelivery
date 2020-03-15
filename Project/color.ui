@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>361</width>
-    <height>62</height>
+    <width>367</width>
+    <height>131</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -54,6 +54,95 @@
       </widget>
      </item>
     </layout>
+   </item>
+   <item>
+    <widget class="QComboBox" name="brushStyle">
+     <item>
+      <property name="text">
+       <string>Solid Patern</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Dense 1 Pattern</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Dense 2 Pattern</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Dense 3 Pattern</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Dense 4 Pattern</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Dense 5 Pattern</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Dense 6 Pattern</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Dense 7 Pattern</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Hor Pattern</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Ver Pattern</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Cross Pattern</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>B Diagonal Pattern</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>F Diagonal Pattern</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Diagonal Cross Pattern</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Linear Gradient Pattern</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Radiant Gradient Pattern</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Conical Gradient Pattern</string>
+      </property>
+     </item>
+    </widget>
    </item>
   </layout>
  </widget>
