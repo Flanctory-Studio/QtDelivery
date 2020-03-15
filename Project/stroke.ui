@@ -51,17 +51,12 @@
        </item>
        <item>
         <property name="text">
-         <string>Dot Line</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
          <string>Dash Line</string>
         </property>
        </item>
        <item>
         <property name="text">
-         <string>Custom Dash</string>
+         <string>Dot Line</string>
         </property>
        </item>
        <item>
