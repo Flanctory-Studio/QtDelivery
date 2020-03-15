@@ -41,6 +41,11 @@
       <widget class="QComboBox" name="strokeType">
        <item>
         <property name="text">
+         <string>No Stroke</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
          <string>Solid Line</string>
         </property>
        </item>
