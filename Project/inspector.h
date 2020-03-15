@@ -22,6 +22,8 @@ public:
     ~Inspector();
 
     void ChangeShapeSelection(uint index);
+    void BlockSignals(bool block);
+
 public slots:
     void OnHierarchyItemSelected(int index);
     void OnHierarchyItemDeleted(int index);
@@ -44,6 +46,7 @@ private:
     MainWindow* mainWindow = nullptr;
 
     int goIndex = 0;
+    bool changeGO = false;
 };
 
 #endif // INSPECTOR_H

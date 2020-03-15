@@ -91,6 +91,32 @@ Inspector::~Inspector()
     delete uiStroke;
 }
 
+void Inspector::BlockSignals(bool block)
+{
+    uiTransform->posXBox->blockSignals(block);
+    uiTransform->posYBox->blockSignals(block);
+
+    uiSize->spinRad->blockSignals(block);
+    uiSize->spinH->blockSignals(block);
+    uiSize->spinW->blockSignals(block);
+    uiSize->spinSize->blockSignals(block);
+
+    uiShape->shapeSelector->blockSignals(block);
+
+    uiColor->spinR->blockSignals(block);
+    uiColor->spinG->blockSignals(block);
+    uiColor->spinB->blockSignals(block);
+
+    uiColor->brushStyle->blockSignals(block);
+
+    uiStroke->pixelSpin->blockSignals(block);
+    uiStroke->strokeType->blockSignals(block);
+
+    uiStroke->spinR->blockSignals(block);
+    uiStroke->spinG->blockSignals(block);
+    uiStroke->spinB->blockSignals(block);
+}
+
 void Inspector::OnHierarchyItemSelected(int index)
 {
     goIndex = index;
@@ -102,14 +128,17 @@ void Inspector::OnHierarchyItemSelected(int index)
 
         qInfo() << index;
 
-        if(*iter != nullptr)
+        if(iter != mainWindow->hierarchy->gameObjects.end())
         {
+            BlockSignals(true);
+
             uiTransform->posXBox->setValue((*iter)->position[0]);
             uiTransform->posYBox->setValue((*iter)->position[1]);
 
             uiSize->spinRad->setValue((*iter)->circleR);
             uiSize->spinH->setValue((*iter)->squareH);
             uiSize->spinW->setValue((*iter)->squareW);
+            uiSize->spinSize->setValue(((*iter)->triangleS));
 
             uiShape->shapeSelector->setCurrentIndex((int)(*iter)->shape);
 
@@ -131,9 +160,13 @@ void Inspector::OnHierarchyItemSelected(int index)
             uiStroke->spinG->setValue(g);
             uiStroke->spinB->setValue(b);
 
+            BlockSignals(false);
+
         }
     }
 }
+
+
 void Inspector::OnHierarchyItemDeleted(int index)
 {
 
@@ -141,6 +174,7 @@ void Inspector::OnHierarchyItemDeleted(int index)
 
   //  goIndex = index;
 }
+
 
 void Inspector::OnInspectorChange(const QString &text)
 {
@@ -163,7 +197,6 @@ void Inspector::OnInspectorChange(const QString &text)
         currentGO->borderColor.setRgb(uiStroke->spinR->value(), uiStroke->spinG->value(), uiStroke->spinB->value());
         currentGO->borderWidth = uiStroke->pixelSpin->value();
 
-        // TODO
         currentGO->shapeStyle =  Qt::BrushStyle(uiColor->brushStyle->currentIndex());
         currentGO->shapeColor.setRgb(uiColor->spinR->value(), uiColor->spinG->value(), uiColor->spinB->value());
 
@@ -176,7 +209,6 @@ void Inspector::OnInspectorChange(const QString &text)
 
         currentGO->triangleS = uiSize->spinSize->value();
 
-        // TODO
         currentGO->circleR = uiSize->spinRad->value();
 
     }

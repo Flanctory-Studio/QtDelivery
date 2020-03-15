@@ -3,6 +3,7 @@
 #include "gameobject.h"
 #include "mainwindow.h"
 #include "QJsonObject"
+#include "scenewidget.h"
 
 Hierarchy::Hierarchy(QWidget *parent, MainWindow* mainWindow) :
     QWidget(parent),
@@ -27,6 +28,8 @@ void Hierarchy::OnAddEntityClicked()
     gameObjects.push_back(gameObject);
 
     ui->listEntities->addItem("GameObject");
+
+    mainWindow->scene->update();
 }
 
 void Hierarchy::OnRemoveEntityClicked()
@@ -43,6 +46,7 @@ void Hierarchy::OnRemoveEntityClicked()
     gameObjects.erase(it);
 
     ui->listEntities->takeItem(currentRow);
+    mainWindow->scene->update();
 }
 
 void Hierarchy::OnItemSelected(int index)

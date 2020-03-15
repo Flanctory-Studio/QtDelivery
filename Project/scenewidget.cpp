@@ -78,11 +78,10 @@ void SceneWidget::DrawGameObject(const std::list<GameObject*>& gameObjects)
         case Shape::Circle:
         {
             // Draw circle
-            int r = 64;
-            int w = r * 2;
-            int h = r * 2;
-            int x = (*it)->position[0] - r;
-            int y = (*it)->position[1] - r;
+            int w = (*it)->circleR * 2;
+            int h = (*it)->circleR * 2;
+            int x = (*it)->position[0] - (*it)->circleR;
+            int y = (*it)->position[1] - (*it)->circleR;
             QRect circleRect(x, y, w, h);
 
             painter.drawEllipse(circleRect);
