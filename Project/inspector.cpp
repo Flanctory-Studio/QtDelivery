@@ -75,6 +75,7 @@ Inspector::Inspector(QWidget *parent, MainWindow* mainWindow) : QWidget(parent),
 
     connect(uiStroke->spinB, SIGNAL(textChanged(const QString &)), this, SLOT(OnInspectorChange(const QString &)));
 
+    ChangeShapeSelection(3);
 
     setLayout(layout);
 }
