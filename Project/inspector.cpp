@@ -193,7 +193,7 @@ void Inspector::OnHierarchyItemDeleted(int index)
 
 
 
-  //  goIndex = index;
+    goIndex = index - 1;
 }
 
 
