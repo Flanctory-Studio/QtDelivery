@@ -4,8 +4,10 @@
 #include <QPainter>
 
 #include "gameobject.h"
+#include "mainwindow.h"
+#include "hierarchy.h"
 
-SceneWidget::SceneWidget(QWidget *parent) : QWidget(parent)
+SceneWidget::SceneWidget(QWidget *parent, MainWindow* mainWindow) : QWidget(parent), mainWindow(mainWindow)
 {
 
 }
@@ -21,7 +23,7 @@ QSize SceneWidget::minimumSizeHint() const
 }
 
 
-void SceneWidget::DrawGameObject(GameObject* gameObject)
+void SceneWidget::DrawGameObject(const std::list<GameObject*>& gameObjects)
 {
     QPainter painter(this);
 
@@ -32,29 +34,29 @@ void SceneWidget::DrawGameObject(GameObject* gameObject)
 
 
 
-    //for all gameobjects
+    for (std::list<GameObject*>::const_iterator it = gameObjects.cbegin(); it != gameObjects.cend(); it++)
     {
         // Set the brush for the shape
-        brush.setColor(gameObject->shapeColor);
-        brush.setStyle(gameObject->shapeStyle);
+        brush.setColor((*it)->shapeColor);
+        brush.setStyle((*it)->shapeStyle);
 
         // Set the pen for the border
-        pen.setWidth(gameObject->borderWidth);
-        pen.setColor(gameObject->borderColor);
-        pen.setStyle(gameObject->borderStyle);
+        pen.setWidth((*it)->borderWidth);
+        pen.setColor((*it)->borderColor);
+        pen.setStyle((*it)->borderStyle);
 
         // Add brush and pen to painter
         painter.setBrush(brush);
         painter.setPen(pen);
 
 
-        switch (gameObject->shape)
+        switch ((*it)->shape)
         {
         case Shape::Square:
         {
-            int x = gameObject->position[0];
-            int y = gameObject->position[1];
-            QRect rect(x, y, gameObject->squareW, gameObject->squareH);
+            int x = (*it)->position[0];
+            int y = (*it)->position[1];
+            QRect rect(x, y, (*it)->squareW, (*it)->squareH);
 
             painter.drawRect(rect);
         }
@@ -63,12 +65,12 @@ void SceneWidget::DrawGameObject(GameObject* gameObject)
         {
             QPolygon polygon;
 
-            int x = gameObject->position[0];
-            int y = gameObject->position[1];
+            int x = (*it)->position[0];
+            int y = (*it)->position[1];
 
-            polygon << QPoint(x, y - gameObject->triangleS)
-                    << QPoint(x + 2 * gameObject->triangleS / 3, y + gameObject->triangleS / 3)
-                    << QPoint(x -  2 * gameObject->triangleS / 3, y + gameObject->triangleS / 3);
+            polygon << QPoint(x, y - (*it)->triangleS)
+                    << QPoint(x + 2 * (*it)->triangleS / 3, y + (*it)->triangleS / 3)
+                    << QPoint(x -  2 * (*it)->triangleS / 3, y + (*it)->triangleS / 3);
 
             painter.drawPolygon(polygon);
         }
@@ -79,8 +81,8 @@ void SceneWidget::DrawGameObject(GameObject* gameObject)
             int r = 64;
             int w = r * 2;
             int h = r * 2;
-            int x = gameObject->position[0] - r;
-            int y = gameObject->position[1] - r;
+            int x = (*it)->position[0] - r;
+            int y = (*it)->position[1] - r;
             QRect circleRect(x, y, w, h);
 
             painter.drawEllipse(circleRect);
@@ -132,19 +134,24 @@ void DrawCircle(SceneWidget* screen, int pos)
 
 void SceneWidget::paintEvent(QPaintEvent *event)
 {
-    GameObject* go = new GameObject();
+    //DrawGameObject()
 
-    go->position[0] = rect().width() / 2;
-    go->position[1] = rect().height() / 2;
 
-    go->borderColor = QColorConstants::Green;
-    go->shapeColor = QColorConstants::Yellow;
 
-    go->borderWidth = 0;
 
-    go->shape = Shape::Triangle;
+//    GameObject* go = new GameObject();
 
-    DrawGameObject(go);
+//    go->position[0] = rect().width() / 2;
+//    go->position[1] = rect().height() / 2;
+
+//    go->borderColor = QColorConstants::Green;
+//    go->shapeColor = QColorConstants::Yellow;
+
+//    go->borderWidth = 0;
+
+//    go->shape = Shape::Triangle;
+
+    DrawGameObject(mainWindow->hierarchy->gameObjects);
 
 }
 
