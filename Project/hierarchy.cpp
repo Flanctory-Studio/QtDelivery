@@ -45,3 +45,14 @@ void Hierarchy::OnItemSelected(int index)
 {
     emit entitySelected(index);
 }
+
+void Hierarchy::ClearGameObjects()
+{
+   for(std::list<GameObject*>::iterator it = gameObjects.begin(); it != gameObjects.end(); ++it)
+   {
+       delete(*it);
+   }
+   gameObjects.clear();
+
+   ui->listEntities->clear();
+}

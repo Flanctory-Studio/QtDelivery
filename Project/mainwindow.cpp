@@ -53,11 +53,6 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(uiMainWindow->actionQuit, SIGNAL(triggered()), this, SLOT(OnQuitClicked()));
 
     connect(hierarchy, SIGNAL(entitySelected(int)), inspector, SLOT(onHierarchyItemSelected(int)));
-
-
-//    ins = new Inspector();
-//    ui->dockInspector->setWidget(ins);
-//    ins->show();
 }
 
 MainWindow::~MainWindow()
@@ -70,14 +65,9 @@ void MainWindow::CreateNewScene()
     currentSceneName = QInputDialog::getText(this, "New Scene", "Scene name:", QLineEdit::Normal, "", nullptr, Qt::WindowFlags(), Qt::ImhNone);
     setWindowTitle("Current Scene: " + currentSceneName);
 
+    hierarchy->ClearGameObjects();
 
-//    QInputDialog dialog( this );
-//    dialog.setModal( true );
-//    dialog.setLabelText("Scene name:");
-//    dialog.exec();
-//    currentSceneName = dialog.textValue();
-
-//    setWindowTitle("Current Scene: " + currentSceneName);
+    //TODO: Tell the inspector to redraw its ui
 }
 
 //SLOTS
