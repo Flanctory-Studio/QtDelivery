@@ -25,7 +25,7 @@ public slots:
     void OnHierarchyItemSelected(int index);
     void OnHierarchyItemDeleted(int index);
 
-    void OnInspectorChange();
+    void OnInspectorChange(const QString &text);
 
 private:
     Ui::Transform* uiTransform = nullptr;

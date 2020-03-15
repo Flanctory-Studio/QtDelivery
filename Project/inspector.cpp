@@ -12,6 +12,7 @@
 #include <QVBoxLayout>
 
 #include "gameobject.h"
+#include "scenewidget.h"
 
 Inspector::Inspector(QWidget *parent, MainWindow* mainWindow) : QWidget(parent), mainWindow(mainWindow)
 {
@@ -49,28 +50,31 @@ Inspector::Inspector(QWidget *parent, MainWindow* mainWindow) : QWidget(parent),
     layout->addSpacerItem(spacer);
 
     //Transform modification
-    connect(uiTransform->posXBox, SIGNAL(clicked()), this, SLOT(OnInspectorChange()));
-    connect(uiTransform->posYBox, SIGNAL(clicked()), this, SLOT(OnInspectorChange()));
+    connect(uiTransform->posXBox, SIGNAL(textChanged(const QString &)), this, SLOT(OnInspectorChange(const QString &)));
+    connect(uiTransform->posYBox, SIGNAL(textChanged(const QString &)), this, SLOT(OnInspectorChange(const QString &)));
 
     //Size modification
-    connect(uiSize->spinRad, SIGNAL(clicked()), this, SLOT(OnInspectorChange()));
-    connect(uiSize->spinH, SIGNAL(clicked()), this, SLOT(OnInspectorChange()));
-    connect(uiSize->spinW, SIGNAL(clicked()), this, SLOT(OnInspectorChange()));
+    connect(uiSize->spinRad, SIGNAL(textChanged(const QString &)), this, SLOT(OnInspectorChange(const QString &)));
+    connect(uiSize->spinH, SIGNAL(textChanged(const QString &)), this, SLOT(OnInspectorChange(const QString &)));
+    connect(uiSize->spinW, SIGNAL(textChanged(const QString &)), this, SLOT(OnInspectorChange(const QString &)));
 
     //Shape modification
-    connect(uiShape->shapeSelector, SIGNAL(clicked()), this, SLOT(OnInspectorChange()));
+    connect(uiShape->shapeSelector, SIGNAL(currentIndexChanged(const QString &)), this, SLOT(OnInspectorChange(const QString &)));
 
     //Obj Color modification
-    connect(uiColor->spinR, SIGNAL(clicked()), this, SLOT(OnInspectorChange()));
-    connect(uiColor->spinG, SIGNAL(clicked()), this, SLOT(OnInspectorChange()));
-    connect(uiColor->spinB, SIGNAL(clicked()), this, SLOT(OnInspectorChange()));
+    connect(uiColor->spinR, SIGNAL(textChanged(const QString &)), this, SLOT(OnInspectorChange(const QString &)));
+    connect(uiColor->spinG, SIGNAL(textChanged(const QString &)), this, SLOT(OnInspectorChange(const QString &)));
+    connect(uiColor->spinB, SIGNAL(textChanged(const QString &)), this, SLOT(OnInspectorChange(const QString &)));
 
     //Stroke modification
-    connect(uiStroke->pixelSpin, SIGNAL(clicked()), this, SLOT(OnInspectorChange()));
-    connect(uiStroke->strokeType, SIGNAL(clicked()), this, SLOT(OnInspectorChange()));
-    connect(uiStroke->spinR, SIGNAL(clicked()), this, SLOT(OnInspectorChange()));
-    connect(uiStroke->spinG, SIGNAL(clicked()), this, SLOT(OnInspectorChange()));
-    connect(uiStroke->spinB, SIGNAL(clicked()), this, SLOT(OnInspectorChange()));
+    connect(uiStroke->pixelSpin, SIGNAL(textChanged(const QString &)), this, SLOT(OnInspectorChange(const QString &)));
+    connect(uiStroke->strokeType, SIGNAL(currentIndexChanged(const QString &)), this, SLOT(OnInspectorChange(const QString &)));
+    connect(uiStroke->spinR, SIGNAL(textChanged(const QString &)), this, SLOT(OnInspectorChange(const QString &)));
+    connect(uiStroke->spinG, SIGNAL(textChanged(const QString &)), this, SLOT(OnInspectorChange(const QString &)));
+    connect(uiStroke->spinB, SIGNAL(textChanged(const QString &)), this, SLOT(OnInspectorChange(const QString &)));
+
+    connect(uiStroke->spinB, SIGNAL(textChanged(const QString &)), this, SLOT(OnInspectorChange(const QString &)));
+
 
     uiSize->spinRad->hide();
     uiSize->labelRad->hide();
@@ -126,7 +130,7 @@ void Inspector::OnHierarchyItemDeleted(int index)
     goIndex = index;
 }
 
-void Inspector::OnInspectorChange()
+void Inspector::OnInspectorChange(const QString &text)
 {
     //Send to Obj the new information
 
@@ -165,6 +169,7 @@ void Inspector::OnInspectorChange()
     else
         printf("Error! No GameObject selected! Current GO is nullptr");
 
+     mainWindow->scene->show();
 }
 
 
