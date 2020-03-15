@@ -77,11 +77,6 @@
    <addaction name="actionSave"/>
    <addaction name="actionQuit"/>
   </widget>
-  <action name="actionHelp">
-   <property name="text">
-    <string>Help</string>
-   </property>
-  </action>
   <action name="actionSave">
    <property name="icon">
     <iconset resource="icons.qrc">
@@ -90,15 +85,8 @@
    <property name="text">
     <string>Save</string>
    </property>
-  </action>
-  <action name="actionFile">
-   <property name="text">
-    <string>File</string>
-   </property>
-  </action>
-  <action name="actionexist">
-   <property name="text">
-    <string>exist</string>
+   <property name="shortcut">
+    <string>Ctrl+S</string>
    </property>
   </action>
   <action name="actionOpen">
@@ -109,6 +97,9 @@
    <property name="text">
     <string>Open</string>
    </property>
+   <property name="shortcut">
+    <string>Ctrl+O</string>
+   </property>
   </action>
   <action name="actionNew">
    <property name="icon">
@@ -117,6 +108,9 @@
    </property>
    <property name="text">
     <string>New</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+A</string>
    </property>
   </action>
   <action name="actionQuit">
@@ -127,65 +121,8 @@
    <property name="text">
     <string>Quit</string>
    </property>
-  </action>
-  <action name="actionUndo">
-   <property name="icon">
-    <iconset resource="icons.qrc">
-     <normaloff>:/icons/icons/PLayer back.png</normaloff>:/icons/icons/PLayer back.png</iconset>
-   </property>
-   <property name="text">
-    <string>Undo</string>
-   </property>
    <property name="shortcut">
-    <string>Ctrl+Z</string>
-   </property>
-  </action>
-  <action name="actionRedo">
-   <property name="icon">
-    <iconset resource="icons.qrc">
-     <normaloff>:/icons/icons/Player Fordward.png</normaloff>:/icons/icons/Player Fordward.png</iconset>
-   </property>
-   <property name="text">
-    <string>Redo</string>
-   </property>
-   <property name="shortcut">
-    <string>Ctrl+Y</string>
-   </property>
-  </action>
-  <action name="toolNew">
-   <property name="icon">
-    <iconset resource="icons.qrc">
-     <normaloff>:/icons/icons/engine/moveTool.png</normaloff>:/icons/icons/engine/moveTool.png</iconset>
-   </property>
-   <property name="text">
-    <string>Move</string>
-   </property>
-   <property name="toolTip">
-    <string>Move Tool</string>
-   </property>
-  </action>
-  <action name="toolRotate">
-   <property name="icon">
-    <iconset resource="icons.qrc">
-     <normaloff>:/icons/icons/engine/rotateTool.png</normaloff>:/icons/icons/engine/rotateTool.png</iconset>
-   </property>
-   <property name="text">
-    <string>Rotate</string>
-   </property>
-   <property name="toolTip">
-    <string>Rotate Tool</string>
-   </property>
-  </action>
-  <action name="toolScale">
-   <property name="icon">
-    <iconset resource="icons.qrc">
-     <normaloff>:/icons/icons/engine/scaleTool.png</normaloff>:/icons/icons/engine/scaleTool.png</iconset>
-   </property>
-   <property name="text">
-    <string>Scale</string>
-   </property>
-   <property name="toolTip">
-    <string>Scale Tool</string>
+    <string>Ctrl+F</string>
    </property>
   </action>
  </widget>
