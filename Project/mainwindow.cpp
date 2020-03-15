@@ -82,14 +82,21 @@ void MainWindow::OnSaveClicked()
 
     hierarchy->SaveScene(arrayJSON);
 
-    currentScene = QJsonDocument(arrayJSON);
+    currentScene = QJsonDocument();
+
+    QJsonObject object;
+    object["GameObjects"] = arrayJSON;
+
+    currentScene.setObject(object);
 
     QFile file(currentSceneName + ".scene");
 
     if (file.open(QIODevice::WriteOnly | QIODevice::Text))
     {
-        QDataStream content (&file);
-        content << currentScene;
+        file.write(currentScene.toJson());
+
+        //QDataStream content (&file);
+        //content << currentScene.toJson();
     }
 }
 
@@ -108,7 +115,10 @@ void MainWindow::OnOpenClicked()
     QByteArray content = file.readAll();
     currentScene = QJsonDocument::fromJson(content);
 
-    QJsonArray array = currentScene.array();
+    QJsonObject object = currentScene.object();
+
+    QJsonArray array = object["GameObjects"].toArray();
+
     hierarchy->LoadScene(array);
 }
 
