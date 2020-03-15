@@ -3,6 +3,8 @@
 #include <QPaintEvent>
 #include <QPainter>
 
+#include "gameobject.h"
+
 SceneWidget::SceneWidget(QWidget *parent) : QWidget(parent)
 {
 
@@ -17,6 +19,58 @@ QSize SceneWidget::minimumSizeHint() const
 {
     return QSize(64,64);
 }
+
+
+void SceneWidget::DrawGameObject(GameObject* gameObject)
+{
+    QPainter painter(this);
+
+    QPen pen;
+    pen.setStyle(Qt::PenStyle::NoPen);
+
+    QBrush brush;
+
+
+
+    //for all gameobjects
+    {
+        // Set the brush for the shape
+        brush.setColor(gameObject->shapeColor);
+        brush.setStyle(gameObject->shapeStyle);
+
+        // Set the pen for the border
+        pen.setWidth(gameObject->lineSize);
+        pen.setColor(gameObject->borderColor);
+        pen.setStyle(gameObject->borderStyle);
+
+        // Add brush and pen to painter
+        painter.setBrush(brush);
+        painter.setPen(pen);
+
+
+        switch (gameObject->shape)
+        {
+        case Shape::Square:
+
+            break;
+        case Shape::Triangle:
+
+            break;
+        case Shape::Circle:
+            // Draw circle
+            int r = 64;
+            int w = r * 2;
+            int h = r * 2;
+            int x = rect().width() / 2 - r;
+            int y = rect().height() / 2 - r;
+            QRect circleRect(x, y, w, h);
+            painter.drawEllipse(circleRect);
+
+            break;
+        }
+    }
+}
+
 
 void DrawCircle(SceneWidget* screen, int pos)
 {
@@ -55,13 +109,9 @@ void DrawCircle(SceneWidget* screen, int pos)
     int y = screen->rect().height() / 2 - r;
     QRect circleRect(x, y, w, h);
     painter.drawEllipse(circleRect);
-
 }
 
 void SceneWidget::paintEvent(QPaintEvent *event)
 {
-
-    DrawCircle(this, -64);
-    DrawCircle(this, 64);
 
 }
