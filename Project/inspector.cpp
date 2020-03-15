@@ -58,6 +58,7 @@ Inspector::Inspector(QWidget *parent, MainWindow* mainWindow) : QWidget(parent),
     connect(uiSize->spinRad, SIGNAL(textChanged(const QString &)), this, SLOT(OnInspectorChange(const QString &)));
     connect(uiSize->spinH, SIGNAL(textChanged(const QString &)), this, SLOT(OnInspectorChange(const QString &)));
     connect(uiSize->spinW, SIGNAL(textChanged(const QString &)), this, SLOT(OnInspectorChange(const QString &)));
+    connect(uiSize->spinSize, SIGNAL(textChanged(const QString &)), this, SLOT(OnInspectorChange(const QString &)));
 
     //Shape modification
     connect(uiShape->shapeSelector, SIGNAL(currentIndexChanged(const QString &)), this, SLOT(OnInspectorChange(const QString &)));
